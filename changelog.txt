@@ -1,0 +1,94 @@
+most recent 20 updates:
+
+2022-02-08T00:25:37+00:00
+fixed go not running target if without arguments
+
+
+2022-02-09T21:25:05+00:00
+added /priority to set process priority
+various cleanups and fixes
+
+
+2022-02-11T15:11:42+00:00
+simplified optional imports
+
+
+2022-02-15T21:00:35+00:00
+fixed default extensions on Windows reading PATH instead of PATHEXT
+allowed subitems in directories to be specified in .gofilter includes
+
+
+2022-02-18T17:54:01+00:00
+fixed s: modifier help text
+
+
+2022-02-18T22:43:50+00:00
+added /update argument and a very simple web updater
+
+
+2022-02-22T19:56:23+00:00
+added /qmax to automatically set the max quiet level available
+added /target to only print the full path to the target and exit
+added error message about an apply list being empty
+proper calling of exit() should now result in better Exit() of external modules
+
+
+2022-02-22T20:07:21+00:00
+added /help (finally, lol)
+improved version-related messages
+improved updater version checking
+
+
+2022-02-22T22:59:48+00:00
+help cleanups and small fixes
+
+
+2022-03-04T09:09:04+00:00
+added /nofilters to ignore .gofilter files temporarily
+fixed cache disabling not working
+added /verbose
+
+
+2022-04-17T14:51:13+00:00
+changed apply argument modifiers to come after the apply argument (aka reversed the +modifiers-arguments to -arguments+modifiers)
+
+
+2022-04-18T23:43:08+00:00
+added support for the regex package, and set it as default if available
+
+
+2022-05-16T17:09:37+00:00
+fixed quietness-verbosity being flipped
+
+
+2022-05-16T17:39:11+00:00
+allowed /echo to only echo on success or failure
+
+
+2022-05-18T09:57:56+00:00
+inline markers can now be indented
+
+
+2022-05-18T12:34:39+00:00
+added GO_DEFAULT_ARGUMENTS environment variable
+
+
+2022-05-24T22:59:45+00:00
+modified the flatten-to-multiple-arguments modifier to a different "transpose" modifier [tsp]
+properly-est-er fixing of the transpose modifier
+fixed /unsafe being ignored in some cases
+many little other fixes or improvements
+
+
+2022-05-24T22:59:53+00:00
+fixed /dapply
+
+
+2022-05-24T23:25:52+00:00
+fixed and improved path cache
+
+
+2022-07-21T12:44:13+00:00
+added strip modifier
+
+

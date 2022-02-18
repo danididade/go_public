@@ -1,0 +1,4 @@
+colorama
+regex
+psutil
+pyperclip
