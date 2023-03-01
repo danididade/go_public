@@ -310,7 +310,7 @@ def PrintModulehelp():
 
 
 class Updater():
-    SCRIPT_URL_PREFIX = "https://raw.githubusercontent.com/danididade/go_public/main/"
+    SCRIPT_URL_PREFIX = "https://raw.githubusercontent.com/Spavid04/go/master/"
 
     @staticmethod
     def TryUpdate():
@@ -319,7 +319,8 @@ class Updater():
         currentVersion = get_current_version()
         prnt(">>>current version:\t[revision %s    version date %s]" % currentVersion)
 
-        newVersion = parse_version(Utils.GetTextFromUrl(Updater.SCRIPT_URL_PREFIX + "version.txt"))
+        beginningText = Utils.GetTextFromUrl(Updater.SCRIPT_URL_PREFIX + "go.py", (0, 50))
+        newVersion = parse_version(beginningText.splitlines()[0])
         if currentVersion >= newVersion:
             prnt(">>>server has:\t\t[revision %s    version date %s]" % newVersion)
             if currentVersion == newVersion:
@@ -330,11 +331,6 @@ class Updater():
 
         prnt(">>>new version available! [revision %s    version date %s]" % newVersion)
         prnt(">>>source: %s" % (Updater.SCRIPT_URL_PREFIX + "go.py"))
-
-        changelog = Utils.GetTextFromUrl(Updater.SCRIPT_URL_PREFIX + "changelog.txt")
-        prnt(">>>changelog:\n")
-        prnt(changelog)
-        prnt("\n\n")
 
         prnt(">>>update? (Y/n): ")
         choice = input()
@@ -1111,8 +1107,11 @@ class Utils():
                     Utils.ProcessWaiter._SetFilePids(pids)
 
     @staticmethod
-    def GetTextFromUrl(url: str) -> str:
-        with urllib.request.urlopen(url) as f:
+    def GetTextFromUrl(url: str, range: typing.Tuple[int, int] = None) -> str:
+        request = urllib.request.Request(url)
+        if range is not None:
+            request.headers["Range"] = "bytes=%d-%d" % range
+        with urllib.request.urlopen(request) as f:
             return f.read().decode("utf-8")
 
     @staticmethod
